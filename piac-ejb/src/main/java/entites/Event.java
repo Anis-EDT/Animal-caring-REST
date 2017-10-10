@@ -28,7 +28,15 @@ public class Event implements Serializable {
 	private Integer nbParticipated;
 	private Integer nbInterrested;
 	private static final long serialVersionUID = 1L;
-
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Event() {
 		super();
 	}   

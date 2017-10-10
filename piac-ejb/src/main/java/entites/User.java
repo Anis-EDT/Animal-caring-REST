@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -38,6 +40,25 @@ public class User implements Serializable {
 	private Integer extraPhone;
 	private String extraEmail;
 	private String extraImg;
+	
+	
+	
+	
+	
+	public void setDoctor(boolean isDoctor) {
+		this.isDoctor = isDoctor;
+	}
+	public void setTrainer(boolean isTrainer) {
+		this.isTrainer = isTrainer;
+	}
+	public void setFostercarer(boolean isFostercarer) {
+		this.isFostercarer = isFostercarer;
+	}
+	public void setRepresentative(boolean isRepresentative) {
+		this.isRepresentative = isRepresentative;
+	}
+	
+
 	private static final long serialVersionUID = 1L;
 
 	public User() {

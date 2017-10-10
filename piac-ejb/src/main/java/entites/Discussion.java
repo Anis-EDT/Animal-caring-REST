@@ -21,6 +21,15 @@ public class Discussion implements Serializable {
 	private Integer nbResponds;
 	private Date createdAt;
 	private boolean enabled;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private static final long serialVersionUID = 1L;
 
 	public Discussion() {

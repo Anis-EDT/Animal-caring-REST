@@ -3,6 +3,7 @@ package entites;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -20,6 +21,16 @@ public class Donation implements Serializable {
 	private String description;
 	private String img;
 	private float amount;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public Donation() {

@@ -17,6 +17,30 @@ public class EventParticipation implements Serializable {
 	@Id
 	private Integer idParticipation;
 	private Timestamp timeParticipation;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	@ManyToOne
+	private  Event event;
+	
+	
+	
+	
+	
+	public Event getEvent() {
+		return event;
+	}
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public EventParticipation() {

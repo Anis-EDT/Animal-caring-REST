@@ -19,7 +19,15 @@ public class AnnouncementCategories implements Serializable {
 	private String name;
 	private String description;
 	private static final long serialVersionUID = 1L;
-
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public AnnouncementCategories() {
 		super();
 	}   

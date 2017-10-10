@@ -22,6 +22,15 @@ public class Announcement implements Serializable {
 	private float price;
 	private Timestamp timeCreated;
 	private Timestamp timeModified;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private static final long serialVersionUID = 1L;
 
 	public Announcement() {

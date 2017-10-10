@@ -19,6 +19,15 @@ public class Forum implements Serializable {
 	private String nameForum;
 	private String descForum;
 	private Integer nbDiscussions;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private static final long serialVersionUID = 1L;
 
 	public Forum() {

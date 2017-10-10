@@ -17,6 +17,30 @@ public class EventInterrested implements Serializable {
 	@Id
 	private Integer idInterrested;
 	private Timestamp timeInterrested;
+	@ManyToOne
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@ManyToOne
+	private  Event event;
+	
+	
+	
+	
+	
+	public Event getEvent() {
+		return event;
+	}
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public EventInterrested() {
