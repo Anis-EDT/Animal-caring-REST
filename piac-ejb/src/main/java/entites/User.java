@@ -26,7 +26,7 @@ public class User implements Serializable {
 	private String gender;
 	private String location;
 	private Date dateCreated;
-	private java.sql.Date dateModified;
+	private Date dateModified;
 	private String img;
 	private String roles;
 	private boolean isDoctor;
