@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 
 public class Forum implements Serializable {
-
+//commit test by omar reg
 	   
 	@Id
 	private Integer idForum;
