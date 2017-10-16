@@ -16,7 +16,7 @@ public class EventService implements IEventService {
 	private EntityManager em ;
 	@Override
 	public List<Event> getEvents() {
-		return em.createQuery("select e.name from Event where idEvent = 1 " ).getResultList();
+		return em.createQuery("select e from Event e" ).getResultList();
 	}
 	@Override
 	public void AddEvent(Event ev) {
@@ -33,8 +33,8 @@ return em.find(Event.class, id);
 	}
 	@Override
 	public void DeletEvent(Event ev) {
-		em.merge(ev);
-		em.remove(ev);		
+		em.remove(em.merge(ev));
+				
 	}
 
 }
