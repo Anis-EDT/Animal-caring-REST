@@ -39,7 +39,13 @@ public class Event implements Serializable {
 	}
 	public Event() {
 		super();
-	}   
+	}  
+	
+	public Event(Integer idEvent, String name) {
+		super();
+		this.idEvent = idEvent;
+		this.name = name;
+	}
 	public Integer getIdEvent() {
 		return this.idEvent;
 	}
@@ -115,6 +121,13 @@ public class Event implements Serializable {
 
 	public void setNbParticipated(Integer nbParticipated) {
 		this.nbParticipated = nbParticipated;
+	}
+	@Override
+	public String toString() {
+		return "Event [idEvent=" + idEvent + ", name=" + name + ", description=" + description + ", dateBegin="
+				+ dateBegin + ", dateEnd=" + dateEnd + ", type=" + type + ", dateCreated=" + dateCreated + ", location="
+				+ location + ", nbParticipation=" + nbParticipation + ", nbParticipated=" + nbParticipated
+				+ ", nbInterrested=" + nbInterrested + ", user=" + user + "]";
 	}
    
 }
