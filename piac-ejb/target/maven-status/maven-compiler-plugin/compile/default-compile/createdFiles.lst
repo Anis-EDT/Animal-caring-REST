@@ -1,0 +1,15 @@
+entites\Donation.class
+entites\EventParticipation.class
+entites\Respond.class
+entites\EventInterrested.class
+entites\SavedAnnouncements.class
+entites\Event.class
+iservices\IParticipationservice.class
+service\EventService.class
+entites\Announcement.class
+service\ParticipationService.class
+entites\Discussion.class
+iservices\IEventService.class
+entites\Forum.class
+entites\AnnouncementCategories.class
+entites\User.class

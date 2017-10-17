@@ -1,0 +1,3 @@
+resources\EventResource.class
+resources\EventParticipationResource.class
+resources\JaxActivator.class

@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -33,8 +34,21 @@ return em.find(Event.class, id);
 	}
 	@Override
 	public void DeletEvent(Event ev) {
-		em.remove(em.merge(ev));
-				
+		em.remove(em.merge(ev));			
+	}
+	@Override
+	public List<Event> FindEventByName(String name) {
+		return em.createQuery("select e from Event e where e.name like :a" ).setParameter("a","%"+ name+"%").getResultList();
+	}
+	@Override
+	public List<Event> FindEventByDate(Date date) {
+		return em.createQuery("SELECT e FROM Event e WHERE e.dateBegin = :startDate ")
+				.setParameter("startDate", date).getResultList();
+	}
+	@Override
+	public List<Event> FindEventByDate2(Date datestart, Date dateend) {
+		return em.createQuery("SELECT e FROM Event e WHERE e.dateBegin  BETWEEN :startDate AND :endDate ")
+				.setParameter("startDate", datestart).setParameter("endDate", dateend).getResultList();
 	}
 
 }
