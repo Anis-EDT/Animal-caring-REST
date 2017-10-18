@@ -1,0 +1,17 @@
+entites/Donation.class
+service/AnnouncementCategoriesService.class
+iservices/IAnnouncementService.class
+service/AnnouncementService.class
+entites/AnnouncementCategories.class
+entites/Event.class
+entites/Forum.class
+service/EventService.class
+entites/EventInterrested.class
+entites/EventParticipation.class
+iservices/IAnnouncementCategoriesService.class
+entites/Announcement.class
+entites/SavedAnnouncements.class
+iservices/IEventService.class
+entites/Respond.class
+entites/Discussion.class
+entites/User.class
