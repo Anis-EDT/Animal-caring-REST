@@ -14,23 +14,32 @@ import javax.persistence.*;
 
 public class Announcement implements Serializable {
 
-	   
 	@Id
 	private Integer idAnnouncement;
 	private String title;
 	private String description;
 	private float price;
+	private boolean confirmed;
 	private Timestamp timeCreated;
 	private Timestamp timeModified;
 	@ManyToOne
 	private User user;
+	@ManyToOne
 	
+	private AnnouncementCategories category;
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public AnnouncementCategories getCategory() {
+		return category;
+	}
+	public void setCategory(AnnouncementCategories category) {
+		this.category = category;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	public Announcement() {
@@ -63,6 +72,13 @@ public class Announcement implements Serializable {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}   
+	public boolean getConfirmed() {
+		return this.confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
 	}   
 	public Timestamp getTimeCreated() {
 		return this.timeCreated;
