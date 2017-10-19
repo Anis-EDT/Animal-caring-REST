@@ -55,4 +55,38 @@ public class AnnouncementService implements IAnnouncementService {
 		return (Collection<Announcement>) query.getResultList();
 	}
 
+	@Override
+	public Collection<Announcement> getAnnouncementsByDate() {
+		// TODO Auto-generated method stub
+		Query query = em.createQuery("SELECT a FROM Announcement a order by price DESC");
+		return (Collection<Announcement>) query.getResultList();
+	}
+
+	@Override
+	public Collection<Announcement> ShowAnnouncementByTitle(String title) {
+		// TODO Auto-generated method stub
+		Query q = (Query) em.createQuery("SELECT a FROM Announcement a where title LIKE :searchKeyword",Announcement.class);
+		q.setParameter("searchKeyword", "%"+title+"%");
+		//Query query = em.createQuery("SELECT a FROM Announcement where title like '%'"+title+"'%'");
+		return (Collection<Announcement>) q.getResultList();
+	}
+
+	@Override
+	public Collection<Announcement> ShowAnnouncementByCategory(String Category) {
+		// TODO Auto-generated method stub
+		Query q = (Query) em.createQuery("SELECT a FROM Announcement a where a.category.name LIKE :searchKeyword",Announcement.class);
+		q.setParameter("searchKeyword", "%"+Category+"%");
+		//Query query = em.createQuery("SELECT a FROM Announcement where title like '%'"+title+"'%'");
+		return (Collection<Announcement>) q.getResultList();
+	}
+
+	@Override
+	public Collection<Announcement> ShowAnnouncementByIdCategory() {
+		// TODO Auto-generated method stub
+		Query q = (Query) em.createQuery("SELECT a FROM Announcement a order By a.category.idCategory ASC");
+		
+		//Query query = em.createQuery("SELECT a FROM Announcement where title like '%'"+title+"'%'");
+		return (Collection<Announcement>) q.getResultList();
+	}
+
 }

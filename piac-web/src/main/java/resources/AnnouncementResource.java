@@ -42,6 +42,39 @@ public class AnnouncementResource {
 	// return Response.status(Status.ACCEPTED);
 
 	}
+	@GET
+	@Path(value = "showByDate")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response showAnnouncementsByDate() {
+
+	return Response.status(200).entity(ac.getAnnouncementsByDate()).build();
+	// return Response.status(Status.ACCEPTED);
+
+	}
+	@GET
+	@Path(value = "showSortByCateg")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response showAnnouncementsSortedByCategory() {
+
+	return Response.status(200).entity(ac.ShowAnnouncementByIdCategory()).build();
+	// return Response.status(Status.ACCEPTED);
+
+	}
+	
+	@Path("/title/{title}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAnnouncementbytitle(@PathParam(value = "title") String title) {
+		return Response.status(200).entity(ac.ShowAnnouncementByTitle(title)).build();
+
+	}
+	@Path("/category/{name}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAnnouncementbyCategory(@PathParam(value = "name") String name) {
+		return Response.status(200).entity(ac.ShowAnnouncementByCategory(name)).build();
+
+	}
 	
 	@Path("/{id}")
 	@GET

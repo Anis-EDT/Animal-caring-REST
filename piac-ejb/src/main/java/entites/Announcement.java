@@ -1,5 +1,7 @@
 package entites;
 
+import entites.AnnouncementCategories;
+import entites.User;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,6 +16,7 @@ import javax.persistence.*;
 
 public class Announcement implements Serializable {
 
+	   
 	@Id
 	private Integer idAnnouncement;
 	private String title;
@@ -25,21 +28,8 @@ public class Announcement implements Serializable {
 	@ManyToOne
 	private User user;
 	@ManyToOne
-	
 	private AnnouncementCategories category;
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public AnnouncementCategories getCategory() {
-		return category;
-	}
-	public void setCategory(AnnouncementCategories category) {
-		this.category = category;
-	}
-
+	
 	private static final long serialVersionUID = 1L;
 
 	public Announcement() {
@@ -93,6 +83,20 @@ public class Announcement implements Serializable {
 
 	public void setTimeModified(Timestamp timeModified) {
 		this.timeModified = timeModified;
+	}   
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}   
+	public AnnouncementCategories getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(AnnouncementCategories category) {
+		this.category = category;
 	}
    
 }
