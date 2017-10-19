@@ -1,0 +1,7 @@
+resources\EventResource.class
+resources\UploadResource.class
+resources\UploadResource$1.class
+resources\ForumResource.class
+resources\ReplyResource.class
+resources\DiscussionResource.class
+resources\JaxActivator.class
