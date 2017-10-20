@@ -1,5 +1,8 @@
 package resources;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -27,26 +30,20 @@ public class EventParticipationResource {
 	IParticipationservice ep = new ParticipationService();
 	@Inject
 	IEventService es = new EventService();
+
 	Event e;
 
 	@POST
+	@Path(value = "add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createevent(EventParticipation ev) {
 
-		if (ep.checkparticipation(ev.getUser(), ev.getEvent())
-				&&
-		(es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipation())>
-		(es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipated())
-				
-				
-				
-				) {
-			e = new Event();
-			e=es.ShowEvent(ev.getEvent().getIdEvent());
-			e.setNbParticipated(es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipated()+1);
-			ev.setEvent(e);
-			//ev.getEvent().setNbParticipated(es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipated() + 1);
-			es.EditEvent(e);
+		if (ep.checkparticipation(ev.getUser(), ev.getEvent()) && (es.ShowEvent(ev.getEvent().getIdEvent())
+				.getNbParticipation()) > (es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipated())
+
+		) {
+			ev.setTimeParticipation(new Timestamp(System.currentTimeMillis()));
+
 			ep.AddParticipation(ev);
 
 			return Response.status(Status.CREATED).build();
@@ -69,6 +66,10 @@ public class EventParticipationResource {
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response deleteParticipation(@PathParam(value = "id") int id) {
+		e = new Event();
+		e = es.ShowEvent(ep.ShowParticipation(id).getEvent().getIdEvent());
+		e.setNbParticipated(e.getNbParticipated() - 1);
+		es.EditEvent(e);
 		ep.DeletParticipation(ep.ShowParticipation(id));
 
 		return Response.status(200).build();
@@ -84,6 +85,40 @@ public class EventParticipationResource {
 			return Response.ok(r).build();
 		else
 			return Response.status(404).build();
+
+	}
+
+	@Path("/confirm/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response confirmparticipation(@PathParam(value = "id") int id) {
+		e = new Event();
+		EventParticipation p = new EventParticipation();
+		p = ep.ShowParticipation(id);
+		e = es.ShowEvent(ep.ShowParticipation(id).getEvent().getIdEvent());
+		e.setNbParticipated(es.ShowEvent(p.getEvent().getIdEvent()).getNbParticipated() + 1);
+		p.setEvent(e);
+		// ev.getEvent().setNbParticipated(es.ShowEvent(ev.getEvent().getIdEvent()).getNbParticipated()
+		// + 1);
+		p.setEtat("confirmed");
+		ep.EditParticipation(p);
+		es.EditEvent(e);
+
+		return Response.status(200).build();
+
+	}
+
+	@Path("/noconfirm/{id}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response noconfirmparticipation(@PathParam(value = "id") int id) {
+		EventParticipation p = new EventParticipation();
+		p = ep.ShowParticipation(id);
+
+		p.setEtat("not_confirmed");
+		ep.EditParticipation(p);
+
+		return Response.status(200).build();
 
 	}
 

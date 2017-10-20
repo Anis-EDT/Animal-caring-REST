@@ -8,8 +8,11 @@ D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\Forum.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\Discussion.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\Donation.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\AnnouncementCategories.java
+D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\iservices\IInterestedEvent.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\service\ParticipationService.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\Event.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\SavedAnnouncements.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\iservices\IParticipationservice.java
 D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\Announcement.java
+D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\entites\EventInterrestedId.java
+D:\Me\work\Education\JEE\pi\piac\piac-ejb\src\main\java\service\InterestedEvent.java

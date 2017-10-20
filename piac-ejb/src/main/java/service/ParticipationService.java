@@ -11,11 +11,12 @@ import entites.Event;
 import entites.EventParticipation;
 import entites.User;
 import iservices.IParticipationservice;
+
 @LocalBean
 @Stateless
 public class ParticipationService implements IParticipationservice {
-	@PersistenceContext(name="piac-ejb")
-	private EntityManager em ;
+	@PersistenceContext(name = "piac-ejb")
+	private EntityManager em;
 
 	@Override
 	public List<EventParticipation> getParticipation() {
@@ -25,13 +26,7 @@ public class ParticipationService implements IParticipationservice {
 	@Override
 	public void AddParticipation(EventParticipation ep) {
 		em.persist(ep);
-		
-	}
 
-	@Override
-	public void EditParticipation(EventParticipation ep) {
-		em.merge(ep);		
-		
 	}
 
 	@Override
@@ -41,19 +36,23 @@ public class ParticipationService implements IParticipationservice {
 
 	@Override
 	public void DeletParticipation(EventParticipation ep) {
-em.remove(em.merge(ep));		
+		em.remove(em.merge(ep));
 	}
 
 	@Override
 	public boolean checkparticipation(User user, Event event) {
-	
-if (em.createQuery("select e from EventParticipation e where e.user=:u and e.event=:p " )
-		.setParameter("p",event).setParameter("u", user).getResultList().size()==0)
-		return true;
-	
-	else 
-		return false ;
-}
-	
-	
+
+		if (em.createQuery("select e from EventParticipation e where e.user=:u and e.event=:p ")
+				.setParameter("p", event).setParameter("u", user).getResultList().size() == 0)
+			return true;
+
+		else
+			return false;
+	}
+
+	@Override
+	public void EditParticipation(EventParticipation ep) {
+		em.merge(ep);
+	}
+
 }

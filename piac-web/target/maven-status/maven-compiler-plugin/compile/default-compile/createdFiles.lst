@@ -1,3 +1,4 @@
+resources\EventInterestedResource.class
 resources\EventResource.class
 resources\EventParticipationResource.class
 resources\JaxActivator.class

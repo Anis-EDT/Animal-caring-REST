@@ -10,41 +10,51 @@ import javax.persistence.PersistenceContext;
 
 import entites.Event;
 import iservices.IEventService;
+
 @LocalBean
 @Stateless
 public class EventService implements IEventService {
-	@PersistenceContext(name="piac-ejb")
-	private EntityManager em ;
+	@PersistenceContext(name = "piac-ejb")
+	private EntityManager em;
+
 	@Override
 	public List<Event> getEvents() {
-		return em.createQuery("select e from Event e" ).getResultList();
+		return em.createQuery("select e from Event e").getResultList();
 	}
+
 	@Override
 	public void AddEvent(Event ev) {
-	em.persist(ev);
+		em.persist(ev);
 	}
+
 	@Override
 	public void EditEvent(Event ev) {
-		em.merge(ev);		
-		
+		em.merge(ev);
+
 	}
+
 	@Override
 	public Event ShowEvent(int id) {
-return em.find(Event.class, id);
+		return em.find(Event.class, id);
 	}
+
 	@Override
 	public void DeletEvent(Event ev) {
-		em.remove(em.merge(ev));			
+		em.remove(em.merge(ev));
 	}
+
 	@Override
 	public List<Event> FindEventByName(String name) {
-		return em.createQuery("select e from Event e where e.name like :a" ).setParameter("a","%"+ name+"%").getResultList();
+		return em.createQuery("select e from Event e where e.name like :a").setParameter("a", "%" + name + "%")
+				.getResultList();
 	}
+
 	@Override
 	public List<Event> FindEventByDate(Date date) {
-		return em.createQuery("SELECT e FROM Event e WHERE e.dateBegin = :startDate ")
-				.setParameter("startDate", date).getResultList();
+		return em.createQuery("SELECT e FROM Event e WHERE e.dateBegin = :startDate ").setParameter("startDate", date)
+				.getResultList();
 	}
+
 	@Override
 	public List<Event> FindEventByDate2(Date datestart, Date dateend) {
 		return em.createQuery("SELECT e FROM Event e WHERE e.dateBegin  BETWEEN :startDate AND :endDate ")
