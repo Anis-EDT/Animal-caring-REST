@@ -10,10 +10,11 @@ import entites.EventInterrested;
 import entites.EventInterrestedId;
 import entites.EventParticipation;
 import iservices.IInterestedEvent;
+import iservices.IInterestedEventRemote;
 
 @LocalBean
 @Stateless
-public class InterestedEvent implements IInterestedEvent {
+public class InterestedEvent implements IInterestedEvent , IInterestedEventRemote {
 	@PersistenceContext(name = "piac-ejb")
 	private EntityManager em;
 

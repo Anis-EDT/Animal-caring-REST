@@ -10,10 +10,11 @@ import javax.persistence.PersistenceContext;
 
 import entites.Event;
 import iservices.IEventService;
+import iservices.IEventServiceRemote;
 
 @LocalBean
 @Stateless
-public class EventService implements IEventService {
+public class EventService implements IEventService , IEventServiceRemote {
 	@PersistenceContext(name = "piac-ejb")
 	private EntityManager em;
 

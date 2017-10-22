@@ -1,12 +1,15 @@
 entites\Donation.class
 entites\EventParticipation.class
+iservices\IInterestedEventRemote.class
 entites\Respond.class
+iservices\IEventServiceRemote.class
 entites\EventInterrested.class
 iservices\IInterestedEvent.class
 entites\SavedAnnouncements.class
 entites\Event.class
 iservices\IParticipationservice.class
 entites\EventInterrestedId.class
+iservices\IParticipationserviceRemote.class
 service\EventService.class
 service\InterestedEvent.class
 entites\Announcement.class

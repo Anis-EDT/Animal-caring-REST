@@ -11,10 +11,11 @@ import entites.Event;
 import entites.EventParticipation;
 import entites.User;
 import iservices.IParticipationservice;
+import iservices.IParticipationserviceRemote;
 
 @LocalBean
 @Stateless
-public class ParticipationService implements IParticipationservice {
+public class ParticipationService implements IParticipationservice  , IParticipationserviceRemote{
 	@PersistenceContext(name = "piac-ejb")
 	private EntityManager em;
 
