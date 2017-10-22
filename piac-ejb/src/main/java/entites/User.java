@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -44,6 +43,7 @@ public class User implements Serializable {
 	
 	
 	
+
 	
 	public void setDoctor(boolean isDoctor) {
 		this.isDoctor = isDoctor;
