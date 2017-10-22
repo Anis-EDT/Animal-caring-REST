@@ -1,13 +1,16 @@
 entites/Donation.class
+iservices/IPicturesService.class
 service/AnnouncementCategoriesService.class
 iservices/IAnnouncementService.class
 service/AnnouncementService.class
+entites/pictures.class
 entites/AnnouncementCategories.class
 entites/Event.class
 entites/Forum.class
 service/EventService.class
 entites/EventInterrested.class
 entites/EventParticipation.class
+service/PicturesService.class
 iservices/IAnnouncementCategoriesService.class
 entites/Announcement.class
 entites/SavedAnnouncements.class

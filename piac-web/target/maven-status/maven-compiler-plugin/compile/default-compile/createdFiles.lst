@@ -1,4 +1,6 @@
+resources/RESTEasyFileUploadService.class
 resources/AnnouncementResource.class
 resources/CategoriesResource.class
+resources/FileUploadForm.class
 resources/EventResource.class
 resources/JaxActivator.class

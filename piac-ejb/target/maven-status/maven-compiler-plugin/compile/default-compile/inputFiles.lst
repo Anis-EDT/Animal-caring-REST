@@ -11,7 +11,10 @@
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/service/AnnouncementService.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/entites/SavedAnnouncements.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/entites/Forum.java
+/Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/iservices/IPicturesService.java
+/Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/service/PicturesService.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/entites/Event.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/entites/AnnouncementCategories.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/iservices/IEventService.java
 /Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/service/EventService.java
+/Users/firassahli/WorkspacePi/pi/animalcaring/piac-ejb/src/main/java/entites/pictures.java

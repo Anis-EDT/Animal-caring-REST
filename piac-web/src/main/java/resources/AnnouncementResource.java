@@ -115,6 +115,27 @@ public class AnnouncementResource {
 		
 		
 		a.setConfirmed(true);
+		a.setDeleted(false);
+		 ac.EditAnnouncement(a);
+			 return Response.ok().build();		 
+	}
+	@Path("/reject/{id}")
+	@PUT
+	public Response RejectAnnouncementById(@PathParam(value="id") int id
+			 ,Announcement a){
+		
+		a.setConfirmed(false);
+		a.setDeleted(true);
+		 ac.EditAnnouncement(a);
+			 return Response.ok().build();		 
+	}
+	@Path("/delete/{id}")
+	@PUT
+	public Response DeleteAnnouncementById(@PathParam(value="id") int id
+			 ,Announcement a){
+		
+		a.setConfirmed(true);
+		a.setDeleted(true);
 		 ac.EditAnnouncement(a);
 			 return Response.ok().build();		 
 	}

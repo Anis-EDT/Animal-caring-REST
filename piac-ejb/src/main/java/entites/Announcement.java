@@ -23,13 +23,13 @@ public class Announcement implements Serializable {
 	private String description;
 	private float price;
 	private boolean confirmed;
+	private boolean deleted;
 	private Timestamp timeCreated;
 	private Timestamp timeModified;
 	@ManyToOne
 	private User user;
 	@ManyToOne
 	private AnnouncementCategories category;
-	
 	private static final long serialVersionUID = 1L;
 
 	public Announcement() {
@@ -69,6 +69,13 @@ public class Announcement implements Serializable {
 
 	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
+	}   
+	public boolean getDeleted() {
+		return this.deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}   
 	public Timestamp getTimeCreated() {
 		return this.timeCreated;

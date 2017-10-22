@@ -14,6 +14,7 @@ public interface IAnnouncementService {
 	public  Collection<Announcement> getAnnouncementsByDate() ;
 	public void AddAnnouncement (Announcement a) ;
 	public void EditAnnouncement(Announcement a);
+	public void RejectAnnouncement(Announcement a);
 	public Announcement ShowAnnouncement(int id);
 	public void DeleteAnnouncement(Announcement a);
 	public Collection<Announcement> ShowAnnouncementByTitle(String title);

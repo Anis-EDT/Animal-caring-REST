@@ -89,4 +89,10 @@ public class AnnouncementService implements IAnnouncementService {
 		return (Collection<Announcement>) q.getResultList();
 	}
 
+	@Override
+	public void RejectAnnouncement(Announcement a) {
+		// TODO Auto-generated method stub
+		em.merge(a);
+	}
+
 }
