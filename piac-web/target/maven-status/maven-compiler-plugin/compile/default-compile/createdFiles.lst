@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 resources\DonationResource.class
 resources\EventResource.class
+=======
+resources\EventInterestedResource.class
+resources\EventResource.class
+resources\EventParticipationResource.class
+>>>>>>> 8a7f363d438f4c1b4415b3ef667305a8f43161da
 resources\JaxActivator.class

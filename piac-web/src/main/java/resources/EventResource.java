@@ -1,8 +1,11 @@
 package resources;
 
+import java.sql.Date;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.Validation;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,9 +30,10 @@ public class EventResource {
 	IEventService es = new EventService();
 
 	@POST
+	@Path(value = "add")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createevent(Event ev) {
-
+		ev.setDateCreated(new Date(System.currentTimeMillis()));
 		es.AddEvent(ev);
 		return Response.status(Status.CREATED).build();
 
@@ -37,7 +41,7 @@ public class EventResource {
 
 	@GET
 	@Path(value = "showall")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response showevents() {
 
 		return Response.status(200).entity(es.getEvents()).build();
@@ -74,4 +78,28 @@ public class EventResource {
 		es.EditEvent(r);
 		return Response.ok().build();
 	}
+
+	@Path("/serch/{name}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findeventbyname(@PathParam(value = "name") String name) {
+		return Response.status(200).entity(es.FindEventByName(name)).build();
+	}
+
+	@Path("/serch/bydate/{date}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findeventbydate(@PathParam(value = "date") String date) {
+		return Response.status(200).entity(es.FindEventByDate(java.sql.Date.valueOf(date))).build();
+	}
+
+	@Path("/serch/bydate/{date1}/{date2}")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findeventbydate(@PathParam(value = "date1") String date1,
+			@PathParam(value = "date2") String date2) {
+		return Response.status(200).entity(es.FindEventByDate2(java.sql.Date.valueOf(date1), Date.valueOf(date2)))
+				.build();
+	}
+
 }
