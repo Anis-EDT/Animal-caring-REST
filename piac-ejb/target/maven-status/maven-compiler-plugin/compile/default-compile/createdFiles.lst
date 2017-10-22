@@ -1,5 +1,15 @@
 entites\Donation.class
 entites\EventParticipation.class
+<<<<<<< HEAD
+entites\Respond.class
+entites\EventInterrested.class
+entites\SavedAnnouncements.class
+entites\Event.class
+iservices\IDonationService.class
+service\EventService.class
+entites\Announcement.class
+service\DonationService.class
+=======
 iservices\IInterestedEventRemote.class
 entites\Respond.class
 iservices\IEventServiceRemote.class
@@ -14,6 +24,7 @@ service\EventService.class
 service\InterestedEvent.class
 entites\Announcement.class
 service\ParticipationService.class
+>>>>>>> 8a7f363d438f4c1b4415b3ef667305a8f43161da
 entites\Discussion.class
 iservices\IEventService.class
 entites\Forum.class
