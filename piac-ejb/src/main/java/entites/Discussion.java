@@ -3,7 +3,8 @@ package entites;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.*;
 
 /**
@@ -19,7 +20,10 @@ public class Discussion implements Serializable {
 	private String subjectDiscussion;
 	private String contentDiscussion;
 	private Integer nbResponds;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedAt;
 	private boolean enabled;
 	private String image;
 	private String video;
@@ -104,6 +108,12 @@ public class Discussion implements Serializable {
 				+ ", contentDiscussion=" + contentDiscussion + ", nbResponds=" + nbResponds + ", createdAt=" + createdAt
 				+ ", enabled=" + enabled + ", image=" + image + ", video=" + video + ", author=" + author + ", forum="
 				+ forum + "]";
+	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
 	}
 	
    

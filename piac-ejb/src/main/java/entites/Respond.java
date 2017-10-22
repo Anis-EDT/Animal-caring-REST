@@ -2,7 +2,8 @@ package entites;
 
 import java.io.Serializable;
 import java.lang.String;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.*;
 
 /**
@@ -18,7 +19,10 @@ public class Respond implements Serializable {
 	private int idRespond;
 	private String contentRespond;
 	private boolean enabled;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedAt;
 	private String image;
 	private String video;
 	@ManyToOne
@@ -89,6 +93,12 @@ public class Respond implements Serializable {
 		return "Respond [idRespond=" + idRespond + ", contentRespond=" + contentRespond + ", enabled=" + enabled
 				+ ", createdAt=" + createdAt + ", image=" + image + ", video=" + video + ", author=" + author
 				+ ", discussion=" + discussion + "]";
+	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
 	}
 	
    

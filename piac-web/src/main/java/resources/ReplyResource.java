@@ -1,5 +1,6 @@
 package resources;
 
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -13,10 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import entites.Discussion;
 import entites.Respond;
-import iservices.DiscussionServiceLocal;
 import iservices.ReplyServiceLocal;
 
 @RequestScoped
@@ -24,11 +22,11 @@ import iservices.ReplyServiceLocal;
 public class ReplyResource {
 	@Inject
 	ReplyServiceLocal metier;
-
+	
+	@Path("/{id}")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createreply(Respond reply) {
-
+	public Response createreply(Respond reply,@PathParam(value = "id") int id) {
 		metier.addRespond(reply);
 		return Response.status(Status.CREATED).build();
 

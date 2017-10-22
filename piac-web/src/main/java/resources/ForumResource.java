@@ -27,7 +27,7 @@ public class ForumResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createforum(Forum f) {
-
+		f.setNbDiscussions(0);
 		metier.addForum(f);
 		return Response.status(Status.CREATED).build();
 

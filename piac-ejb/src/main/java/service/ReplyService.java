@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -28,6 +29,8 @@ public class ReplyService implements ReplyServiceLocal {
 
 	@Override
 	public void addRespond(Respond respond) {
+		Date sysdate=new Date();
+		respond.setCreatedAt(sysdate);
 		em.persist(respond);
 		
 	}

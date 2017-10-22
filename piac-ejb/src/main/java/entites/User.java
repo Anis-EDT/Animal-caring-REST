@@ -32,6 +32,7 @@ public class User implements Serializable {
 	private String img;
 	private String roles;
 	private boolean isDoctor;
+	private String isDoctorStatus;
 	private boolean isTrainer;
 	private boolean isFostercarer;
 	private boolean isRepresentative;
@@ -162,6 +163,13 @@ public class User implements Serializable {
 	public void setIsDoctor(boolean isDoctor) {
 		this.isDoctor = isDoctor;
 	}   
+	
+	public String getIsDoctorStatus() {
+		return isDoctorStatus;
+	}
+	public void setIsDoctorStatus(String isDoctorStatus) {
+		this.isDoctorStatus = isDoctorStatus;
+	}
 	public boolean getIsTrainer() {
 		return this.isTrainer;
 	}
