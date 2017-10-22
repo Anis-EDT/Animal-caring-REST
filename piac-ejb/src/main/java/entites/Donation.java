@@ -3,6 +3,7 @@ package entites;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -17,10 +18,26 @@ public class Donation implements Serializable {
 	   
 	@Id
 	private Integer idDonation;
+	private String nom;
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	private String type;
 	private String description;
 	private String img;
 	private float amount;
+	private Date date;
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@ManyToOne
 	private User user;
 	

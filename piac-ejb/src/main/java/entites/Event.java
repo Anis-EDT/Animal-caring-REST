@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -16,6 +18,7 @@ public class Event implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idEvent;
 	private String name;
 	private String description;
@@ -24,10 +27,19 @@ public class Event implements Serializable {
 	private String type;
 	private Date dateCreated;
 	private String location;
+
 	private Integer nbParticipation;
 	private Integer nbParticipated;
 	private Integer nbInterrested;
 	private static final long serialVersionUID = 1L;
+	
+
+	@OneToMany(mappedBy="event")
+	
+	private List<EventInterrested> listinterested ;
+	
+
+	
 	@ManyToOne
 	private User user;
 	
@@ -57,7 +69,7 @@ public class Event implements Serializable {
 		return nbInterrested;
 	}
 	public void setNbInterrested(Integer nbInterrested) {
-		this.nbInterrested = nbInterrested;
+		this.nbInterrested = nbInterrested == null ? 0 : nbInterrested;
 	}
 	public String getName() {
 		return this.name;
@@ -109,18 +121,21 @@ public class Event implements Serializable {
 		this.location = location;
 	}   
 	public Integer getNbParticipation() {
-		return this.nbParticipation;
+		return this.nbParticipation ;
 	}
 
 	public void setNbParticipation(Integer nbParticipation) {
-		this.nbParticipation = nbParticipation;
+		this.nbParticipation =  nbParticipation == null ? 0 : nbParticipation;
 	}   
 	public Integer getNbParticipated() {
-		return this.nbParticipated;
+		return this.nbParticipated ;
 	}
 
 	public void setNbParticipated(Integer nbParticipated) {
-		this.nbParticipated = nbParticipated;
+	if (nbParticipated == null )
+			this.nbParticipated = 0 ;
+	else	
+	this.nbParticipated = nbParticipated ;
 	}
 	@Override
 	public String toString() {

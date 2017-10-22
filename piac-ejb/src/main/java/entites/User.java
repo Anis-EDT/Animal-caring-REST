@@ -43,6 +43,7 @@ public class User implements Serializable {
 	
 	
 	
+
 	
 	public void setDoctor(boolean isDoctor) {
 		this.isDoctor = isDoctor;
