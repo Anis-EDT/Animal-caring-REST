@@ -22,6 +22,12 @@ public class AnnouncementCategories implements Serializable {
 	@ManyToOne
 	private User user;
 	
+	public AnnouncementCategories(Integer idCategory, String name) {
+		super();
+		this.idCategory = idCategory;
+		this.name = name;
+	}
+	
 	public User getUser() {
 		return user;
 	}

@@ -92,5 +92,6 @@
     <module>piac-ejb</module>
     <module>piac-web</module>
     <module>piac-ear</module>
+    <module>clientevent</module>
   </modules>
 </project>
