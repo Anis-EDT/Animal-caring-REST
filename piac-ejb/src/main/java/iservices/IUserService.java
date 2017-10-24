@@ -12,4 +12,5 @@ public interface IUserService {
 	public void EditProfile(User us);
 	public User ShowProfile(int id);
 	User findUser(User user);
+	public User findUserByMail(String mail);
 }

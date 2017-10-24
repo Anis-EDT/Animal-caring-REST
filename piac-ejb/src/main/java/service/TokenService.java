@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.ws.rs.NotAuthorizedException;
 
-import entites.Token;
+import entites.TokenS;
 import entites.User;
 import iservices.IUserService;
 import iservices.TokenServiceRemote;
@@ -27,12 +27,11 @@ public class TokenService implements TokenServiceRemote{
 	@Override
 	public void setToken(String tokenValue, User user) {
 		// TODO Auto-generated method stub
-		Token token = new Token();
+		TokenS token = new TokenS();
 		token.setValue(tokenValue);
 		
-		Token queryToken = this.find(user);
+		TokenS queryToken = this.find(user);
 		if(queryToken == null){
-			System.out.println("User in setToken : "+user);
 			token.setUser(user);
 			Date expires = new Date();
 	        expires.setTime(expires.getTime() + 1000 * 60 * 60 * 24);
@@ -50,8 +49,8 @@ public class TokenService implements TokenServiceRemote{
 
 	@Override
 	public User getUser(String tokenValue) throws NotAuthorizedException{
-		System.out.println("Token value : "+tokenValue);
-		Token token = this.find(tokenValue);
+		TokenS token = this.find(tokenValue);
+		
 		if (token == null) {
             throw new NotAuthorizedException("Token unknown");
         }
@@ -66,28 +65,34 @@ public class TokenService implements TokenServiceRemote{
 	}
 
 	@Override
-	public Token find(String tokenValue) {
-		Query query = em.createQuery("SELECT t from Token t where t.value = :value");
+	public TokenS find(String tokenValue) {
+		Query query = em.createQuery("SELECT t from TokenS t where t.value = :value");
 		query.setParameter("value", tokenValue);
-		return (Token) query.getSingleResult();
+		return (TokenS) query.getSingleResult();
 	}
 
 	@Override
-	public void save(Token token) {
+	public void save(TokenS token) {
 		em.persist(token);	
 	}
 
 	@Override
-	public Token find(User u) {
-		Query query = em.createQuery("SELECT t from Token t where t.user = :id");
+	public TokenS find(User u) {
+		Query query = em.createQuery("SELECT t from TokenS t where t.user = :id");
 		query.setParameter("id", u);
-		Token retToken = null;
+		TokenS retToken = null;
 		try{
-			retToken = (Token) query.getSingleResult();
+			retToken = (TokenS) query.getSingleResult();
 		}catch(Exception e){
 			return null;
 		}
 		return retToken;
 	}
+	@Override
+	public User getuserbytoken(String token){
+		Query query = em.createQuery("SELECT t.user from TokenS t where t.value = :id");
+		return (User) query.setParameter("id", token).getSingleResult();
 
+	}
+	
 }

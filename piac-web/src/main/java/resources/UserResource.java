@@ -1,10 +1,8 @@
 package resources;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -18,6 +16,8 @@ import javax.ws.rs.core.Response.Status;
 import entites.User;
 import iservices.IUserService;
 import service.UserService;
+import resources.Secured;
+
 
 @RequestScoped
 @Path(value = "user")
@@ -26,7 +26,7 @@ public class UserResource {
 	IUserService es = new UserService(); 
 	
 	
-	
+	@Secured
 	@Path("/signup")
 	 @POST
 	 @Consumes(MediaType.APPLICATION_JSON)
@@ -38,7 +38,7 @@ public class UserResource {
 		
 	  
  }
-
+	@Secured
 	 @Path("/{id}")
 		@GET
 		@Produces(MediaType.APPLICATION_JSON)
@@ -57,30 +57,26 @@ public class UserResource {
 			es.EditProfile(us);
 			return Response.ok().build();
 		}
-	 @Path("/doctor")
-	 @GET
-	 @Consumes(MediaType.APPLICATION_JSON)
+	 @Path("/doc")
+	@PUT
 	 public Response doctor(User us){
 		us.setIsDoctor(true);
 		return Response.status(Status.CREATED).build(); 
  }
 	 @Path("/fostercare")
-	 @GET
-	 @Consumes(MediaType.APPLICATION_JSON)
+	@PUT
 	 public Response fostercare(User us){
 		us.setIsFostercarer(true);
 		return Response.status(Status.CREATED).build(); 
  }
-	 @Path("/trainer")
-	 @GET
-	 @Consumes(MediaType.APPLICATION_JSON)
+	 @Path("/trainer/{id}")
+	@PUT
 	 public Response trainer(User us){
 		us.setIsTrainer(true);
 		return Response.status(Status.CREATED).build(); 
  }
-	 @Path("/representative")
-	 @GET
-	 @Consumes(MediaType.APPLICATION_JSON)
+	 @Path("/rep/{id}")
+	@PUT
 	 public Response representative(User us){
 		us.setIsRepresentative(true);
 		return Response.status(Status.CREATED).build(); 

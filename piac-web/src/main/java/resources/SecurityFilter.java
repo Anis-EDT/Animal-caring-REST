@@ -22,6 +22,7 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 
 import resources.Secured;
+import entites.TokenS;
 import entites.User;
 import iservices.IUserService;
 import iservices.TokenServiceRemote;
@@ -31,7 +32,6 @@ import iservices.TokenServiceRemote;
 @Provider
 public class SecurityFilter implements ContainerRequestFilter{
 	
-	
 	@EJB
 	IUserService userService;
 	
@@ -40,8 +40,11 @@ public class SecurityFilter implements ContainerRequestFilter{
 	
 	@Context
     private ResourceInfo resourceInfo;
+	
+	public static  User u;
 
-	private static final String AUTHROIZATION_HEADER_PREFIX = "Bearer";
+
+	private static final String AUTHROIZATION_HEADER_PREFIX = "Bearer ";
 	
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -55,7 +58,6 @@ public class SecurityFilter implements ContainerRequestFilter{
                 // Extract the token from the HTTP Authorization header
 				tokenForUser = authorizationHeader.substring(AUTHROIZATION_HEADER_PREFIX.length())
 						.trim();
-				System.out.println(tokenForUser);
             }
 			else if (requestContext.getCookies().containsKey("auth_token")) {
 				 tokenForUser = requestContext.getCookies().get("auth_token").getValue();
@@ -64,8 +66,9 @@ public class SecurityFilter implements ContainerRequestFilter{
 				System.out.println("NO HEADER OR COOKIES FOUND... ");
 				throw new Exception();
 			}
-			final User user = tokenService.getUser(tokenForUser);
-				
+			  u = tokenService.getuserbytoken(tokenForUser);
+
+
 
             final SecurityContext currentSecurityContext = requestContext.getSecurityContext();
             requestContext.setSecurityContext(new SecurityContext() {
@@ -74,7 +77,7 @@ public class SecurityFilter implements ContainerRequestFilter{
                     return new Principal() {
                         @Override
                         public String getName() {
-                            return user.getEmail();
+                            return null;
                         }
                     };
                 }

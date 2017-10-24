@@ -1,6 +1,5 @@
 package service;
 
-import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -8,9 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import entites.Event;
 import entites.User;
-import iservices.IEventService;
 import iservices.IUserService;
 @LocalBean
 @Stateless
@@ -21,13 +18,11 @@ public class UserService implements IUserService {
 
 	@Override
 	public boolean login(User u){
-		System.out.println("Login from service : "+u);
 		Query query = em.createQuery("SELECT u FROM User u WHERE u.email = :email "
 				+ "AND u.pwd = :password");
 		query.setParameter("email", u.getEmail());
 		query.setParameter("password", u.getPwd());
 		int resultCount = query.getResultList().size();
-		System.out.println("Found "+resultCount+" Result(s) ");
 		if(resultCount != 1){
 			return false;
 		}
@@ -60,5 +55,14 @@ public class UserService implements IUserService {
 		User userFromDB = (User) query.getSingleResult();
 		return userFromDB;
 	}
+
+	@Override
+	public User findUserByMail(String mail) {
+		Query query = em.createQuery("SELECT u FROM User u WHERE u.email = :email");
+		query.setParameter("email", mail);
+		User userFromDB = (User) query.getSingleResult();
+		return userFromDB;
+	}
+	
 
 }

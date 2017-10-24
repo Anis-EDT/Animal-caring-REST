@@ -10,13 +10,11 @@ import java.security.Principal;
 
 import javax.annotation.Priority;
 import javax.ejb.EJB;
-import javax.ws.rs.NameBinding;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
@@ -25,7 +23,6 @@ import entites.Role;
 import entites.User;
 import iservices.IUserService;;
 
-@Secured
 @Provider
 @Priority(Priorities.AUTHORIZATION)
 public class RoleFilter implements ContainerRequestFilter{

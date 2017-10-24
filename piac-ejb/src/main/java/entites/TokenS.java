@@ -8,21 +8,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="t_token")
-public class Token {
+public class TokenS {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String value;
 	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name="user_id")
 	private User user;
 	private Date expiration;
 	
+	public TokenS() {
+		super();
+	}
 	public int getId() {
 		return id;
 	}
