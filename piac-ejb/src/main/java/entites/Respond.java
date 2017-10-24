@@ -1,9 +1,9 @@
 package entites;
 
 import java.io.Serializable;
-import java.lang.Integer;
 import java.lang.String;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.*;
 
 /**
@@ -16,31 +16,30 @@ public class Respond implements Serializable {
 
 	   
 	@Id
-	private Integer idRespond;
+	private int idRespond;
 	private String contentRespond;
 	private boolean enabled;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedAt;
 	private String image;
 	private String video;
 	@ManyToOne
-	private User user;
+	private User author;
+	@ManyToOne
+	private Discussion discussion;
 	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	private static final long serialVersionUID = 1L;
 
 	public Respond() {
 		super();
 	}   
-	public Integer getIdRespond() {
+	public int getIdRespond() {
 		return this.idRespond;
 	}
 
-	public void setIdRespond(Integer idRespond) {
+	public void setIdRespond(int idRespond) {
 		this.idRespond = idRespond;
 	}   
 	public String getContentRespond() {
@@ -78,5 +77,29 @@ public class Respond implements Serializable {
 	public void setVideo(String video) {
 		this.video = video;
 	}
+	public User getAuthor() {
+		return author;}
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+	public Discussion getDiscussion() {
+		return discussion;
+	}
+	public void setDiscussion(Discussion discussion) {
+		this.discussion = discussion;
+	}
+	@Override
+	public String toString() {
+		return "Respond [idRespond=" + idRespond + ", contentRespond=" + contentRespond + ", enabled=" + enabled
+				+ ", createdAt=" + createdAt + ", image=" + image + ", video=" + video + ", author=" + author
+				+ ", discussion=" + discussion + "]";
+	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	
    
 }

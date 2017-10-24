@@ -1,5 +1,7 @@
 package entites;
 
+import entites.AnnouncementCategories;
+import entites.User;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
@@ -20,17 +22,14 @@ public class Announcement implements Serializable {
 	private String title;
 	private String description;
 	private float price;
+	private boolean confirmed;
+	private boolean deleted;
 	private Timestamp timeCreated;
 	private Timestamp timeModified;
 	@ManyToOne
 	private User user;
-	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+	@ManyToOne
+	private AnnouncementCategories category;
 	private static final long serialVersionUID = 1L;
 
 	public Announcement() {
@@ -64,6 +63,20 @@ public class Announcement implements Serializable {
 	public void setPrice(float price) {
 		this.price = price;
 	}   
+	public boolean getConfirmed() {
+		return this.confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
+	}   
+	public boolean getDeleted() {
+		return this.deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}   
 	public Timestamp getTimeCreated() {
 		return this.timeCreated;
 	}
@@ -77,6 +90,20 @@ public class Announcement implements Serializable {
 
 	public void setTimeModified(Timestamp timeModified) {
 		this.timeModified = timeModified;
+	}   
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}   
+	public AnnouncementCategories getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(AnnouncementCategories category) {
+		this.category = category;
 	}
    
 }

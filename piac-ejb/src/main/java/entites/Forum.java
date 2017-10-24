@@ -12,21 +12,21 @@ import javax.persistence.*;
 @Entity
 
 public class Forum implements Serializable {
-
+//commit test by omar reg
 	   
 	@Id
-	private Integer idForum;
+	private int idForum;
 	private String nameForum;
 	private String descForum;
-	private Integer nbDiscussions;
+	private int nbDiscussions;
 	@ManyToOne
-	private User user;
+	private User supervisor;
 	
-	public User getUser() {
-		return user;
+	public User getSupervisor() {
+		return supervisor;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setSupervisor(User supervisor) {
+		this.supervisor = supervisor;
 	}
 	private static final long serialVersionUID = 1L;
 
@@ -61,5 +61,11 @@ public class Forum implements Serializable {
 	public void setNbDiscussions(Integer nbDiscussions) {
 		this.nbDiscussions = nbDiscussions;
 	}
+	@Override
+	public String toString() {
+		return "Forum [idForum=" + idForum + ", nameForum=" + nameForum + ", descForum=" + descForum
+				+ ", nbDiscussions=" + nbDiscussions + ", supervisor=" + supervisor + "]";
+	}
+	
    
 }

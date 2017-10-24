@@ -3,7 +3,8 @@ package entites;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.*;
 
 /**
@@ -19,16 +20,22 @@ public class Discussion implements Serializable {
 	private String subjectDiscussion;
 	private String contentDiscussion;
 	private Integer nbResponds;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedAt;
 	private boolean enabled;
+	private String image;
+	private String video;
 	@ManyToOne
-	private User user;
-	
-	public User getUser() {
-		return user;
+	private User author;
+	@ManyToOne
+	private Forum forum;
+	public User getAuthor() {
+		return author;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 	private static final long serialVersionUID = 1L;
 
@@ -77,5 +84,37 @@ public class Discussion implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	public Forum getForum() {
+		return forum;
+	}
+	public void setForum(Forum forum) {
+		this.forum = forum;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getVideo() {
+		return video;
+	}
+	public void setVideo(String video) {
+		this.video = video;
+	}
+	@Override
+	public String toString() {
+		return "Discussion [idDiscussion=" + idDiscussion + ", subjectDiscussion=" + subjectDiscussion
+				+ ", contentDiscussion=" + contentDiscussion + ", nbResponds=" + nbResponds + ", createdAt=" + createdAt
+				+ ", enabled=" + enabled + ", image=" + image + ", video=" + video + ", author=" + author + ", forum="
+				+ forum + "]";
+	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	
    
 }
